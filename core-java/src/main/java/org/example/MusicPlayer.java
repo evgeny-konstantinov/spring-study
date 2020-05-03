@@ -40,6 +40,6 @@ public class MusicPlayer {
 
     @PreDestroy
     public void dispose() {
-        System.out.println(this + "is about to be destroyed");
+        System.out.println(this + " is about to be destroyed");
     }
 }
