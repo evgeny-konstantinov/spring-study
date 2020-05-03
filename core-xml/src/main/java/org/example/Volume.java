@@ -1,21 +1,21 @@
 package org.example;
 
 public interface Volume {
-    void setVolume(int i);
-
     int getVolume();
+
+    void setVolume(int i);
 }
 
 class VolumeImpl implements Volume {
     private int volume;
 
     @Override
-    public void setVolume(int i) {
-        this.volume = i;
+    public int getVolume() {
+        return this.volume;
     }
 
     @Override
-    public int getVolume() {
-        return this.volume;
+    public void setVolume(int i) {
+        this.volume = i;
     }
 }
