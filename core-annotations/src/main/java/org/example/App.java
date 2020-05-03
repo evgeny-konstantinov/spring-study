@@ -11,7 +11,6 @@ public class App {
         musicPlayer.play();
         System.out.println(musicPlayer.getVolume().getVolume());
 
-
         applicationContext.close();
     }
 }
