@@ -1,6 +1,7 @@
 package org.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ public class MusicPlayer {
     private Volume volume;
 
     @Autowired
-    public MusicPlayer(Music music) {
+    public MusicPlayer(@Qualifier("rockMusic") Music music) {
         this.music = music;
     }
 
@@ -40,6 +41,6 @@ public class MusicPlayer {
 
     @PreDestroy
     public void dispose() {
-        System.out.println(this + "is about to be destroyed");
+        System.out.println(this + " is about to be destroyed");
     }
 }
