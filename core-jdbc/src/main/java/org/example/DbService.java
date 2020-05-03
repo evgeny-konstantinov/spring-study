@@ -22,7 +22,7 @@ public class DbService {
         jdbcTemplate.execute("CREATE TABLE Persons (\n" +
                 "    PersonID int,\n" +
                 "    LastName varchar(255),\n" +
-                "    FirstName varchar(255),\n" +
+                "    FirstName varchar(255)" +
                 ")");
         System.out.println("done");
         throw new IllegalArgumentException(":(");
@@ -32,7 +32,7 @@ public class DbService {
         jdbcTemplate.execute("CREATE TABLE Persons (\n" +
                 "    PersonID int,\n" +
                 "    LastName varchar(255),\n" +
-                "    FirstName varchar(255),\n" +
+                "    FirstName varchar(255)" +
                 ")");
         System.out.println("done2");
     }

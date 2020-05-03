@@ -13,6 +13,7 @@ public class App {
         } catch (Exception e) {
             System.out.println("oops");
         }
+        // create the same table twice to check if the previous transaction was rolled back
         dbService.execute2();
 
         applicationContext.registerShutdownHook();
