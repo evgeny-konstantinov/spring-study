@@ -1,0 +1,26 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+# Vault
+*.zip
+*.jar
+.keep
+node_modules
+
+.history
+.vscode/launch.json
+.vscode/settings.json
