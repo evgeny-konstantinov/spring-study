@@ -23,8 +23,6 @@ public class DbService {
                 "    PersonID int,\n" +
                 "    LastName varchar(255),\n" +
                 "    FirstName varchar(255),\n" +
-                "    Address varchar(255),\n" +
-                "    City varchar(255)\n" +
                 ")");
         System.out.println("done");
         throw new IllegalArgumentException(":(");
@@ -35,8 +33,6 @@ public class DbService {
                 "    PersonID int,\n" +
                 "    LastName varchar(255),\n" +
                 "    FirstName varchar(255),\n" +
-                "    Address varchar(255),\n" +
-                "    City varchar(255)\n" +
                 ")");
         System.out.println("done2");
     }
