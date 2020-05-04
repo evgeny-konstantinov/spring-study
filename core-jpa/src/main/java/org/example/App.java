@@ -8,13 +8,8 @@ public class App {
                 new AnnotationConfigApplicationContext(SpringConfig.class);
 
         DbService dbService = applicationContext.getBean(DbService.class);
-        try {
-            dbService.execute();
-        } catch (Exception e) {
-            System.out.println("oops");
-        }
-        // create the same table twice to check if the previous transaction was rolled back
-        dbService.execute2();
+        dbService.persistPerson("Evgeny");
+        System.out.println(dbService.getPersons());
 
         applicationContext.registerShutdownHook();
         applicationContext.close();

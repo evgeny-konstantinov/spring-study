@@ -1,39 +1,28 @@
 package org.example;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.sql.DataSource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.List;
 
 @Service
 @Transactional
 public class DbService {
 
-    private JdbcTemplate jdbcTemplate;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    @Autowired
-    public void init(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    public void persistPerson(String name) {
+        Person person = new Person();
+        person.setName(name);
+        entityManager.persist(person);
     }
 
-    public void execute() {
-        jdbcTemplate.execute("CREATE TABLE Persons (\n" +
-                "    PersonID int,\n" +
-                "    LastName varchar(255),\n" +
-                "    FirstName varchar(255)" +
-                ")");
-        System.out.println("done");
-        throw new IllegalArgumentException(":(");
-    }
-
-    public void execute2() {
-        jdbcTemplate.execute("CREATE TABLE Persons (\n" +
-                "    PersonID int,\n" +
-                "    LastName varchar(255),\n" +
-                "    FirstName varchar(255)" +
-                ")");
-        System.out.println("done2");
+    public List<Person> getPersons() {
+        Query query = entityManager.createQuery("select p from Person p");
+        return query.getResultList();
     }
 }
