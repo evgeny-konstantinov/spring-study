@@ -10,7 +10,9 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.AbstractJpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -35,6 +37,7 @@ public class SpringConfig {
         Properties properties = new Properties();
         properties.setProperty("eclipselink.ddl-generation", "create-tables");
         properties.setProperty("eclipselink.weaving", "false");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
         factory.setJpaProperties(properties);
         return factory;
     }
@@ -50,7 +53,8 @@ public class SpringConfig {
 
     @Bean
     public JpaVendorAdapter eclipseLinkJpaVendorAdapter() {
-        EclipseLinkJpaVendorAdapter jpaVendorAdapter = new EclipseLinkJpaVendorAdapter();
+        AbstractJpaVendorAdapter jpaVendorAdapter = new EclipseLinkJpaVendorAdapter();
+        // AbstractJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         jpaVendorAdapter.setShowSql(true);
         return jpaVendorAdapter;
     }
